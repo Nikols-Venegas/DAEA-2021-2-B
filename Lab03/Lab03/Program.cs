@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace prjLab01_2
+namespace Lab03
 {
     static class Program
     {

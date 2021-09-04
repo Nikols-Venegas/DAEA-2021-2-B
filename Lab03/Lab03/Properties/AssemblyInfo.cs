@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
-// asociada a un ensamblado.
-[assembly: AssemblyTitle("prjLab01-1")]
+// asociada con un ensamblado.
+[assembly: AssemblyTitle("Lab03")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("prjLab01-1")]
+[assembly: AssemblyProduct("Lab03")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("22f8fe66-ea4a-4e8a-87cc-3d8157e662ce")]
+[assembly: Guid("4c0a1388-df54-40c2-95f2-aa150b0adce0")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

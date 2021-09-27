@@ -109,11 +109,34 @@ namespace Lab05
             if(dgvListado.SelectedRows.Count > 0)
             {
                 txtPersonID.Text = dgvListado.SelectedRows[0].Cells[0].Value.ToString();
-                txtFirstName.Text = dgvListado.SelectedRows[0].Cells[1].Value.ToString();
-                txtLastName.Text = dgvListado.SelectedRows[0].Cells[2].Value.ToString();
+                txtLastName.Text = dgvListado.SelectedRows[0].Cells[1].Value.ToString();
+                txtFirstName.Text = dgvListado.SelectedRows[0].Cells[2].Value.ToString();
                 txtHireDate.Text = dgvListado.SelectedRows[0].Cells[3].Value.ToString();
                 txtEnrollmentDate.Text = dgvListado.SelectedRows[0].Cells[4].Value.ToString();
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            String FirstName = txtFirstName.Text;
+            String sp = "BuscarPersonaNombre";
+            SqlCommand cmd = new SqlCommand(sp, con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter param = new SqlParameter();
+            param.ParameterName = "@FirstName";
+            param.SqlDbType = SqlDbType.NVarChar;
+            param.Value = FirstName;
+
+            cmd.Parameters.Add(param);
+            SqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dgvListado.DataSource = dt;
+            dgvListado.Refresh();
+            con.Close();
         }
     }
 }

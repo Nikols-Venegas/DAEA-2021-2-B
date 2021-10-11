@@ -48,6 +48,8 @@ namespace lab06
             this.label1 = new System.Windows.Forms.Label();
             this.btnOrderLastName = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnBuscarApellido = new System.Windows.Forms.Button();
+            this.btnBuscarName = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListado)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -219,7 +221,7 @@ namespace lab06
             // 
             // btnOrderLastName
             // 
-            this.btnOrderLastName.Location = new System.Drawing.Point(233, 203);
+            this.btnOrderLastName.Location = new System.Drawing.Point(117, 202);
             this.btnOrderLastName.Name = "btnOrderLastName";
             this.btnOrderLastName.Size = new System.Drawing.Size(149, 25);
             this.btnOrderLastName.TabIndex = 15;
@@ -237,11 +239,33 @@ namespace lab06
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // btnBuscarApellido
+            // 
+            this.btnBuscarApellido.Location = new System.Drawing.Point(388, 203);
+            this.btnBuscarApellido.Name = "btnBuscarApellido";
+            this.btnBuscarApellido.Size = new System.Drawing.Size(90, 23);
+            this.btnBuscarApellido.TabIndex = 17;
+            this.btnBuscarApellido.Text = "Buscar Apellido";
+            this.btnBuscarApellido.UseVisualStyleBackColor = true;
+            this.btnBuscarApellido.Click += new System.EventHandler(this.btnBuscarApellido_Click);
+            // 
+            // btnBuscarName
+            // 
+            this.btnBuscarName.Location = new System.Drawing.Point(279, 202);
+            this.btnBuscarName.Name = "btnBuscarName";
+            this.btnBuscarName.Size = new System.Drawing.Size(92, 23);
+            this.btnBuscarName.TabIndex = 18;
+            this.btnBuscarName.Text = "Buscar Nombre";
+            this.btnBuscarName.UseVisualStyleBackColor = true;
+            this.btnBuscarName.Click += new System.EventHandler(this.btnBuscarName_Click);
+            // 
             // ManPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 513);
+            this.Controls.Add(this.btnBuscarName);
+            this.Controls.Add(this.btnBuscarApellido);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnOrderLastName);
             this.Controls.Add(this.dgvListado);
@@ -282,6 +306,8 @@ namespace lab06
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnOrderLastName;
         private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnBuscarApellido;
+        private System.Windows.Forms.Button btnBuscarName;
     }
 }
 

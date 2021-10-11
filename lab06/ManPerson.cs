@@ -162,5 +162,20 @@ namespace lab06
             txtHireDate.Value = DateTime.Now;
             
         }
+
+        //TAREA DOS MÉTODOS MÁS BUSCAR POR NOMBRE Y POR APELLIDO 
+        private void btnBuscarName_Click(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(tablePerson);
+            dv.RowFilter = "FirstName = '" + txtFirstName.Text + "'";
+            dgvListado.DataSource = dv;
+        }
+
+        private void btnBuscarApellido_Click(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(tablePerson);
+            dv.RowFilter = "LastName = '" + txtLastName.Text + "'";
+            dgvListado.DataSource = dv;
+        }
     }
 }

@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FFD4E5BD-1A89-40F3-A329-38F5C53877FE}</ProjectGuid>
+    <ProjectGuid>{2834E35B-9949-4121-B2DB-A19AFD2DFEEF}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lab12</RootNamespace>
-    <AssemblyName>Lab12</AssemblyName>
+    <RootNamespace>Lab13</RootNamespace>
+    <AssemblyName>Lab13</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44329</IISExpressSSLPort>
+    <IISExpressSSLPort>44385</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -108,6 +108,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Persona\Listar.cshtml" />
+    <Content Include="Views\Persona\Mostrar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -131,9 +132,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60543</DevelopmentServerPort>
+          <DevelopmentServerPort>64922</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44329/</IISUrl>
+          <IISUrl>https://localhost:44385/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

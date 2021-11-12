@@ -14,7 +14,7 @@ namespace Lab13.Controllers
         {
             return View();
         }
-        public ActionResult Listar()
+        public ActionResult Listar(string filtro, string dato)
         {
             List<Persona> personas = new List<Persona>();
             personas.Add(new Persona
@@ -44,7 +44,15 @@ namespace Lab13.Controllers
                 FechaNac = Convert.ToDateTime("1982-02-14"),
                 Email = "carlos@mail.com"
             });
-            return View(personas);
+
+            if (filtro == "Nombre")
+            {
+                return View(personas.Where(x => x.Nombre.StartsWith(dato) || dato == null).ToList());
+            }
+            else
+            {
+                return View(personas);
+            }
         }
         public ActionResult Mostrar(int id)
         {
@@ -82,5 +90,6 @@ namespace Lab13.Controllers
                                select p).FirstOrDefault();
             return View(persona);
         }
+        
     }
 }

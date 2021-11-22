@@ -1,0 +1,35 @@
+﻿@model Products
+@{
+    ViewBag.Title = "CreateProd";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.ProductID) </label>
+        @*Html.EditorFor(model => model.CategoryID)*@
+        @*Html.ValidationMessageFor(model => model.CategoryID)*@
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.ProductName) </label>
+        @Html.EditorFor(model => model.ProductName)
+        @Html.ValidationMessageFor(model => model.ProductName)
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.UnitPrice) </label>
+        @Html.EditorFor(model => model.UnitPrice)
+        @Html.ValidationMessageFor(model => model.UnitPrice)
+    </div>
+
+    <div class="col-auto">
+        <input type="submit" class="btn btn-primary mb-3" value="Create" />
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Retornar al Index", "Index")
+</div>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab14
+namespace Lab14.Models
 {
     using System;
     using System.Collections.Generic;

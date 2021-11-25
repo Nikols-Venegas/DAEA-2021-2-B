@@ -1,0 +1,62 @@
+﻿@model Lab14.Models.Products
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Create Product</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.ProductID) </label>
+        @Html.EditorFor(model => model.ProductID)
+        @Html.ValidationMessageFor(model => model.ProductID)
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.ProductName) </label>
+        @Html.EditorFor(model => model.ProductName)
+        @Html.ValidationMessageFor(model => model.ProductName)
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.SupplierID) </label>
+        @Html.EditorFor(model => model.SupplierID)
+        @Html.ValidationMessageFor(model => model.SupplierID)
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.CategoryID) </label>
+        @Html.EditorFor(model => model.CategoryID)
+        @Html.ValidationMessageFor(model => model.CategoryID)
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.QuantityPerUnit) </label>
+        @Html.EditorFor(model => model.QuantityPerUnit)
+        @Html.ValidationMessageFor(model => model.QuantityPerUnit)
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.SupplierID) </label>
+        @Html.EditorFor(model => model.SupplierID)
+        @Html.ValidationMessageFor(model => model.SupplierID)
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.UnitPrice) </label>
+        @Html.EditorFor(model => model.UnitPrice)
+        @Html.ValidationMessageFor(model => model.UnitPrice)
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.UnitsInStock) </label>
+        @Html.EditorFor(model => model.UnitsInStock)
+        @Html.ValidationMessageFor(model => model.UnitsInStock)
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.UnitsOnOrder) </label>
+        @Html.EditorFor(model => model.UnitsOnOrder)
+        @Html.ValidationMessageFor(model => model.UnitsOnOrder)
+    </div>
+    <div class="col-auto">
+        <input type="submit" class="btn btn-primary mb-3" value="Save" />
+    </div>
+}
+<div>
+    @Html.ActionLink("Retornar al Index", "Index")
+</div>

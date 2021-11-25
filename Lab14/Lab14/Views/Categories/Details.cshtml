@@ -1,13 +1,11 @@
-﻿@model IEnumerable<Lab14.Products>
+﻿@model IEnumerable<Lab14.Models.Products>
 
-@{
-    ViewBag.Title = "Details";
-}
+@{ ViewBag.Title = "Details"; }
 
 <h2>Details</h2>
 
 <p>
-    @Html.ActionLink("Crear un nuevo Producto", "Create")
+    @Html.ActionLink("Crear nueva categoria", "Create")
 </p>
 
 <table>
@@ -45,8 +43,8 @@
         <th></th>
     </tr>
 
-    @foreach ( var item in Model)
-            {
+    @foreach (var item in Model)
+    {
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.ProductID)
@@ -80,5 +78,5 @@
     </td>
 
 </tr>
-            }
+}
 </table>

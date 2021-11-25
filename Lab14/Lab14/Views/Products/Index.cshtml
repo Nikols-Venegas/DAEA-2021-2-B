@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Lab14.Models.Products>
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Agregar Producto", "Create", null,
+                        new { @class = "btn btn-sm btn-primary" })
+</p>
+<a class="nav-link" href="~/Categories">Ir a Categorias</a>
+<br />
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.ProductID)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.ProductName)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.SupplierID)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.CategoryID)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.QuantityPerUnit)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.UnitPrice)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.UnitsInStock)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.UnitsOnOrder)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.ReorderLevel)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Discontinued)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <th>@Html.DisplayFor(modelItem => product.ProductID)</th>
+                <td>@Html.DisplayFor(modelItem => product.ProductName)</td>
+                <td>@Html.DisplayFor(modelItem => product.SupplierID)</td>
+                <td>@Html.DisplayFor(modelItem => product.CategoryID)</td>
+                <td>@Html.DisplayFor(modelItem => product.QuantityPerUnit)</td>
+                <td>@Html.DisplayFor(modelItem => product.UnitPrice)</td>
+                <td>@Html.DisplayFor(modelItem => product.UnitsInStock)</td>
+                <td>@Html.DisplayFor(modelItem => product.UnitsOnOrder)</td>
+                <td>@Html.DisplayFor(modelItem => product.ReorderLevel)</td>
+                <td>@Html.DisplayFor(modelItem => product.Discontinued)</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit",
+                        new { id = product.ProductID }) |
+                    @Html.ActionLink("Borrar", "Delete",
+                        new { id = product.ProductID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

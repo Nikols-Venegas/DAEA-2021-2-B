@@ -1,0 +1,50 @@
+﻿@model Lab14.Models.Products
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.ProductName)</label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayFor(model => model.ProductName) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.SupplierID) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayFor(model => model.SupplierID) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.CategoryID) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayFor(model => model.CategoryID) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.QuantityPerUnit) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayFor(model => model.QuantityPerUnit) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.UnitPrice) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayFor(model => model.UnitPrice) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.UnitsInStock) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayFor(model => model.UnitsInStock) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.UnitsInStock) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayFor(model => model.UnitsInStock) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.UnitsOnOrder) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayFor(model => model.UnitsOnOrder) </label>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="col-auto">
+        <input type="submit" class="btn btn-primary mb-3" value="Delete" />
+    </div>}
+
+<div>
+    @Html.ActionLink("Retornar al Index", "Index")
+</div>

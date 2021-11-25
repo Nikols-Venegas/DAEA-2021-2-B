@@ -1,12 +1,13 @@
-﻿@model IEnumerable<Lab14.Categories>
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model IEnumerable<Lab14.Models.Categories>
+@{ ViewBag.Title = "Index"; }
 
 <h2>Index</h2>
 <p>
-    @Html.ActionLink("Nueva Categoria", "Create")
+    @Html.ActionLink("Nueva Categoria", "Create", null,
+                        new { @class = "btn btn-sm btn-primary" })
 </p>
+    <a class="nav-link" href="~/Products">Ir a productos</a>
+<br />
 <table class="table table-dark table-striped">
     <tr>
         <th>
@@ -24,22 +25,21 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.CategoryID }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.CategoryID }) |
-                @Html.ActionLink("Borrar", "Delete", new { id = item.CategoryID })
-            </td>
-        </tr>
-    }
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CategoryID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CategoryName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.CategoryID }) |
+        @Html.ActionLink("Detalles", "Details", new { id = item.CategoryID }) |
+        @Html.ActionLink("Borrar", "Delete", new { id = item.CategoryID })
+    </td>
+</tr>}
 
 </table>

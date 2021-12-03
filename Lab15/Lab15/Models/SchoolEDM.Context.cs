@@ -12,6 +12,8 @@ namespace Lab15.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class SchoolEntities : DbContext
     {
@@ -32,5 +34,126 @@ namespace Lab15.Models
         public virtual DbSet<OnlineCourse> OnlineCourse { get; set; }
         public virtual DbSet<OnsiteCourse> OnsiteCourse { get; set; }
         public virtual DbSet<Person> Person { get; set; }
+    
+        public virtual ObjectResult<BuscarCursoTitle_Result> BuscarCursoTitle(string title)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BuscarCursoTitle_Result>("BuscarCursoTitle", titleParameter);
+        }
+    
+        public virtual ObjectResult<BuscarPersonaNombre_Result> BuscarPersonaNombre(string firstName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BuscarPersonaNombre_Result>("BuscarPersonaNombre", firstNameParameter);
+        }
+    
+        public virtual int DeleteOfficeAssignment(Nullable<int> instructorID)
+        {
+            var instructorIDParameter = instructorID.HasValue ?
+                new ObjectParameter("InstructorID", instructorID) :
+                new ObjectParameter("InstructorID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteOfficeAssignment", instructorIDParameter);
+        }
+    
+        public virtual int DeletePerson(Nullable<int> personID)
+        {
+            var personIDParameter = personID.HasValue ?
+                new ObjectParameter("PersonID", personID) :
+                new ObjectParameter("PersonID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeletePerson", personIDParameter);
+        }
+    
+        public virtual ObjectResult<GetStudentGrades_Result> GetStudentGrades(Nullable<int> studentID)
+        {
+            var studentIDParameter = studentID.HasValue ?
+                new ObjectParameter("StudentID", studentID) :
+                new ObjectParameter("StudentID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentGrades_Result>("GetStudentGrades", studentIDParameter);
+        }
+    
+        public virtual ObjectResult<byte[]> InsertOfficeAssignment(Nullable<int> instructorID, string location)
+        {
+            var instructorIDParameter = instructorID.HasValue ?
+                new ObjectParameter("InstructorID", instructorID) :
+                new ObjectParameter("InstructorID", typeof(int));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("Location", location) :
+                new ObjectParameter("Location", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<byte[]>("InsertOfficeAssignment", instructorIDParameter, locationParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> InsertPerson(string lastName, string firstName, Nullable<System.DateTime> hireDate, Nullable<System.DateTime> enrollmentDate)
+        {
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var hireDateParameter = hireDate.HasValue ?
+                new ObjectParameter("HireDate", hireDate) :
+                new ObjectParameter("HireDate", typeof(System.DateTime));
+    
+            var enrollmentDateParameter = enrollmentDate.HasValue ?
+                new ObjectParameter("EnrollmentDate", enrollmentDate) :
+                new ObjectParameter("EnrollmentDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("InsertPerson", lastNameParameter, firstNameParameter, hireDateParameter, enrollmentDateParameter);
+        }
+    
+        public virtual ObjectResult<byte[]> UpdateOfficeAssignment(Nullable<int> instructorID, string location, byte[] origTimestamp)
+        {
+            var instructorIDParameter = instructorID.HasValue ?
+                new ObjectParameter("InstructorID", instructorID) :
+                new ObjectParameter("InstructorID", typeof(int));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("Location", location) :
+                new ObjectParameter("Location", typeof(string));
+    
+            var origTimestampParameter = origTimestamp != null ?
+                new ObjectParameter("OrigTimestamp", origTimestamp) :
+                new ObjectParameter("OrigTimestamp", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<byte[]>("UpdateOfficeAssignment", instructorIDParameter, locationParameter, origTimestampParameter);
+        }
+    
+        public virtual int UpdatePerson(Nullable<int> personID, string lastName, string firstName, Nullable<System.DateTime> hireDate, Nullable<System.DateTime> enrollmentDate)
+        {
+            var personIDParameter = personID.HasValue ?
+                new ObjectParameter("PersonID", personID) :
+                new ObjectParameter("PersonID", typeof(int));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var hireDateParameter = hireDate.HasValue ?
+                new ObjectParameter("HireDate", hireDate) :
+                new ObjectParameter("HireDate", typeof(System.DateTime));
+    
+            var enrollmentDateParameter = enrollmentDate.HasValue ?
+                new ObjectParameter("EnrollmentDate", enrollmentDate) :
+                new ObjectParameter("EnrollmentDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePerson", personIDParameter, lastNameParameter, firstNameParameter, hireDateParameter, enrollmentDateParameter);
+        }
     }
 }

@@ -171,6 +171,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BuscarCursoTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="BuscarPersonaNombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteOfficeAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InstructorID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeletePerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetStudentGrades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertOfficeAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InstructorID" Type="int" Mode="In" />
+          <Parameter Name="Location" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsertPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="HireDate" Type="datetime" Mode="In" />
+          <Parameter Name="EnrollmentDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="UpdateOfficeAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InstructorID" Type="int" Mode="In" />
+          <Parameter Name="Location" Type="nvarchar" Mode="In" />
+          <Parameter Name="OrigTimestamp" Type="timestamp" Mode="In" />
+        </Function>
+        <Function Name="UpdatePerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="HireDate" Type="datetime" Mode="In" />
+          <Parameter Name="EnrollmentDate" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="SchoolModelStoreContainer">
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CourseGrade" EntityType="Self.CourseGrade" Schema="dbo" store:Type="Tables" />
@@ -406,7 +443,61 @@
             <End Role="Course" EntitySet="Course" />
             <End Role="Person" EntitySet="Person" />
           </AssociationSet>
+          <FunctionImport Name="BuscarCursoTitle" ReturnType="Collection(SchoolModel.BuscarCursoTitle_Result)">
+            <Parameter Name="Title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BuscarPersonaNombre" ReturnType="Collection(SchoolModel.BuscarPersonaNombre_Result)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteOfficeAssignment">
+            <Parameter Name="InstructorID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeletePerson">
+            <Parameter Name="PersonID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentGrades" ReturnType="Collection(SchoolModel.GetStudentGrades_Result)">
+            <Parameter Name="StudentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertOfficeAssignment" ReturnType="Collection(Binary)">
+            <Parameter Name="InstructorID" Mode="In" Type="Int32" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertPerson" ReturnType="Collection(Decimal)">
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="HireDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EnrollmentDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateOfficeAssignment" ReturnType="Collection(Binary)">
+            <Parameter Name="InstructorID" Mode="In" Type="Int32" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="OrigTimestamp" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePerson">
+            <Parameter Name="PersonID" Mode="In" Type="Int32" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="HireDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EnrollmentDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="BuscarCursoTitle_Result">
+          <Property Type="Int32" Name="CourseID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Credits" Nullable="false" />
+          <Property Type="Int32" Name="DepartmentID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="BuscarPersonaNombre_Result">
+          <Property Type="Int32" Name="PersonID" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="HireDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EnrollmentDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetStudentGrades_Result">
+          <Property Type="Int32" Name="EnrollmentID" Nullable="false" />
+          <Property Type="Decimal" Name="Grade" Nullable="true" Precision="3" Scale="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -490,6 +581,41 @@
               <ScalarProperty Name="PersonID" ColumnName="PersonID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="BuscarCursoTitle" FunctionName="SchoolModel.Store.BuscarCursoTitle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolModel.BuscarCursoTitle_Result">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BuscarPersonaNombre" FunctionName="SchoolModel.Store.BuscarPersonaNombre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolModel.BuscarPersonaNombre_Result">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteOfficeAssignment" FunctionName="SchoolModel.Store.DeleteOfficeAssignment" />
+          <FunctionImportMapping FunctionImportName="DeletePerson" FunctionName="SchoolModel.Store.DeletePerson" />
+          <FunctionImportMapping FunctionImportName="GetStudentGrades" FunctionName="SchoolModel.Store.GetStudentGrades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolModel.GetStudentGrades_Result">
+                <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertOfficeAssignment" FunctionName="SchoolModel.Store.InsertOfficeAssignment" />
+          <FunctionImportMapping FunctionImportName="InsertPerson" FunctionName="SchoolModel.Store.InsertPerson" />
+          <FunctionImportMapping FunctionImportName="UpdateOfficeAssignment" FunctionName="SchoolModel.Store.UpdateOfficeAssignment" />
+          <FunctionImportMapping FunctionImportName="UpdatePerson" FunctionName="SchoolModel.Store.UpdatePerson" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
